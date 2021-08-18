@@ -2,29 +2,21 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('WorkingDays', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
+      weekDay: {
         type: Sequelize.STRING
       },
-      firstName: {
-        type: Sequelize.STRING
+      workingDate: {
+        type: Sequelize.DATE
       },
-      lastName: {
-        type: Sequelize.STRING
-      },
-      companyId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {         // User belongsTo Company 1:1
-          model: 'Companies',
-          key: 'id'
-        }
+      isWorking: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +29,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('WorkingDays');
   }
 };
